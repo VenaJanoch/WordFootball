@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">SlovniFotbal</string>
+    <string name="app_name">Slovni Fotbal</string>
+    <string name="cze_language">CZE</string>
+    <string name="eng_language">ENG</string>
+    <string name="ww_tv_language">Vyberte jazyk hry</string>
+    <string name="ww_bt_play">Hraj</string>
+    <string name="ww_bt_dictionary">Zobraz slovník</string>
+    <string name="ww_ad_no_language">Nevybral jsi žádný jazyk</string>
+    <string name="ww_ad_no_language_message">Pro dalsi krok musíš vybrat jazyk</string>
+    <string name="sw_tv_language">Nastavení hry</string>
+    <string name="sw_tv_time">Doba hry</string>
+    <string name="sw_tv_player1">Jméno hráče 1:</string>
+    <string name="sw_tv_player2">Jméno hráče 2:</string>
+    <string name="sw_tv_player3">Jméno hráče 3:</string>
+    <string name="sw_tv_player4">Jméno hráče 4:</string>
+    <string name="sw_ad_no_player">Nezadal jsi zadne jmeno</string>
+    <string name="sw_ad_no_player_message">Pro zahajeni hry musis zadat alespon jedno jmeno</string>
+    <string name="sw_bt_play">Jdeme hrát</string>
+    <string name="gw_tv_player_name">Hraje hráč</string>
+    <string name="gw_tv_time_out">Čas vypršel!</string>
+    <string name="gw_bt_confirm">Zadej</string>
+    <string name="gw_bt_new_word">Jiné slovo</string>
+    <string name="gw_et_word">Zadej slovo</string>
+    <string name="gw_bt_computer">Tah počítače</string>
+    <string name="gw_err_no_word">Nezadal jsi žádné slovo!</string>
+    <string name="gw_err_bad_letterr">Zadané slovo nezačíná písmenem, kterým předchozí slovo končí!</string>
+    <string name="gw_err_bad_noun">Zadané slovo není české podstatné jméno!</string>
+    <string name="gw_err_bad_word">Zadané slovo již bylo použito!</string>
+    <string name="gw_pd_computer_turn">Na tahu je počítač!</string>
+    <string name="gw_pd_computer_word">"Počítač zahrál slovo "</string>
+    <string name="gw_pd_switch_player">Přepnutí na dalšího hráče!</string>
+    <string name="gw_pd_next_player">Další na řadě je hráč</string>
+    <string name="gw_ad_end_game">Hra končí!</string>
+    <string name="gw_ad_computer_turn">"Nestihl jsi najít odpověď na počítačův tah "</string>
+    <string name="gw_ad_multiple_turn">Hra končí, vítězí hráč %1$s, který zahrál tah %2$s, na který nenašel žádný hráč odpověď"</string>
+
 </resources>

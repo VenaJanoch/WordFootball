@@ -1,17 +1,14 @@
 package com.example.venaj.slovnifotbal;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
-import android.widget.Spinner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -20,9 +17,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static String language; // jazyk slovniku
+    AlertDialog alert;
 
-    public static final String CZE = "CZE";
-    public static final String ENG = "ENg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +33,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showSettingActivity(View view) {
         Intent i = new Intent(this,
-                ActivityNastaveni.class);
+                ActivitySetting.class);
 
-        i.putExtra("DICTIONARY", language);
-        startActivity(i);
+        if(language != null){
+            i.putExtra("DICTIONARY", language);
+            language = null;
+            startActivity(i);
+        }else{
+            showNoLanguageDialog();
+        }
+
     }
 
     /**
@@ -49,9 +51,28 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showDictionary(View view) {
         Intent i = new Intent(this,
-                ActivitySlovnik.class);
-        i.putExtra("slovnik", language);
-        startActivity(i);
+                ActivityDictionary.class);
+        if(language != null){
+            i.putExtra("DICTIONARY", language);
+            language = null;
+            startActivity(i);
+        }else{
+        showNoLanguageDialog();
+        }
+
+    }
+
+    public void showNoLanguageDialog(){
+        alert = new AlertDialog.Builder(this).create();
+        alert.setTitle(getString(R.string.ww_ad_no_language));
+        alert.setMessage(getString(R.string.ww_ad_no_language_message));
+        alert.setButton(RESULT_OK, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alert.cancel();
+            }
+        });
+        alert.show();
     }
 
     public void languageSelect(View view) {
@@ -65,14 +86,14 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.rb_cze:
                 if (checked){
-                    language = CZE;
+                    language = getString(R.string.cze_language);
                     engRB.setChecked(false);
                 }
 
                     break;
             case R.id.rb_eng:
                 if (checked){
-                    language = ENG;
+                    language = getString(R.string.eng_language);
                     czeRB.setChecked(false);
                 }
                     break;

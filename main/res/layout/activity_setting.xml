@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ActivityNastaveni"
+    tools:context=".ActivitySetting"
     android:background="@drawable/gras_bg"
     >
     <LinearLayout
@@ -14,7 +14,7 @@
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".ActivityNastaveni"
+        tools:context=".ActivitySetting"
         android:background="@drawable/test"
         android:layout_margin="30dp"
     >
@@ -23,7 +23,7 @@
             android:id="@+id/tv_nastaveni_hry"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:text="Nastavení hry"
+            android:text="@string/sw_tv_language"
             android:textAlignment="center"
             android:textColor="@android:color/holo_red_light"
             android:fontFamily="@font/welcome_red"
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Doba hry"
+                android:text="@string/sw_tv_time"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="24sp"
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jmeno hrace 1:"
+                android:text="@string/sw_tv_player1"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="18sp"
@@ -104,12 +104,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jmeno hrace 1:"
+                android:text="@string/sw_tv_player2"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Jmeno hrace 2: " />
+                />
 
             <EditText
                 android:id="@+id/et_gamer2"
@@ -135,12 +135,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jmeno hrace 1:"
+                android:text="@string/sw_tv_player3"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Jmeno hrace 3: " />
+                />
 
             <EditText
                 android:id="@+id/et_gamer3"
@@ -166,12 +166,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jmeno hrace 1:"
+                android:text="@string/sw_tv_player4"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Jmeno hrace 4: " />
+                />
 
             <EditText
                 android:id="@+id/et_gamer4"
@@ -192,7 +192,7 @@
         android:layout_gravity="center"
         android:onClick="showGameActivity"
         android:background="@drawable/test"
-        android:text="Jdeme hrát"
+        android:text="@string/sw_bt_play"
         />
 
 </LinearLayout>

@@ -10,14 +10,13 @@ import java.util.Random;
  */
 public class Trie {
 
-    private TrieNode koren;
+    private TrieNode root;
 
     //private Alphabet alphabet;
 
     public Trie() {
-        Abeceda.naplnAbecedu();
-        //alphabet = new Alphabet();
-        koren = new TrieNode(' ');
+        Alphabet.fillAlphabet();
+        root = new TrieNode(' ');
     }
 
     /**
@@ -26,8 +25,8 @@ public class Trie {
      * @throws Exception
      */
     public void addWord(String word) throws Exception {
-        koren.addNode(word);
-        //System.out.println("Pridano " + word);
+        root.addNode(word);
+
     }
 
     /**
@@ -37,21 +36,21 @@ public class Trie {
      * @throws Exception
      */
     public boolean findWord(String word) throws Exception {
-        TrieNode node = koren;
+        TrieNode node = root;
 
         for (int i =0; i<word.length(); i++) {
             char letter = word.charAt(i);
             TrieNode child = node.findNode(letter);
-            //System.out.println(letter);
+
             if (child==null) {
-                //System.out.println("nenalezeno " + word);
+
                 return false;
             }
             node = child;
         }
 
         if (node.getIsWord()) {
-            //System.out.println("nalezeno " + word);
+
             return true;
         } else {
             return false;
@@ -61,31 +60,31 @@ public class Trie {
 
     /**
      * vrati nahodne slovo zacinajici na pismeno z parametru
-     * @param prvniPismeno
+     * @param firstChar
      * @return
      */
-    public String vratRandomSlovo(char prvniPismeno){
-        TrieNode node = koren;
-        node = node.getPotomci().get(Abeceda.najdiPoziciPismena(prvniPismeno));
-        String slovo = "" + node.getValue();
-        ArrayList<Integer> indexyNenulovych = new ArrayList<>();
-        indexyNenulovych.add(5);
+    public String returnRandomWord(char firstChar){
+        TrieNode node = root;
+        node = node.getChildren().get(Alphabet.findLetterPosition(firstChar));
+        String word = "" + node.getValue();
+        ArrayList<Integer> fullIndexs = new ArrayList<>();
+        fullIndexs.add(5);
         Random r = new Random();
-        while(indexyNenulovych.size() != 0){
-            indexyNenulovych.clear();
-            for(int i = 0; i < node.getPotomci().size(); i++){
-                if(node.getPotomci().get(i) != null){
-                    indexyNenulovych.add(i);
+        while(fullIndexs.size() != 0){
+            fullIndexs.clear();
+            for(int i = 0; i < node.getChildren().size(); i++){
+                if(node.getChildren().get(i) != null){
+                    fullIndexs.add(i);
                 }
             }
-            if(indexyNenulovych.size() == 0){
+            if(fullIndexs.size() == 0){
                 break;
             }
-            int random = r.nextInt(indexyNenulovych.size());
-            node = node.getPotomci().get(indexyNenulovych.get(random));
-            slovo += node.getValue();
+            int random = r.nextInt(fullIndexs.size());
+            node = node.getChildren().get(fullIndexs.get(random));
+            word += node.getValue();
         }
-        System.out.println(slovo);
-        return slovo;
+
+        return word;
     }
 }

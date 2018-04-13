@@ -8,27 +8,25 @@ import java.util.List;
  * reprezentuje uzel trie
  */
 public class TrieNode {
-    private TrieNode rodic; // odkaz na rodice
-    private List<TrieNode> potomci; // seznam potomku
+    private TrieNode parent; // odkaz na rodice
+    private List<TrieNode> children; // seznam potomku
 
     private char value;
     private int listSize;
 
     private boolean word;
-    //Alphabet alphabet;
+
     public static int count = 0;
 
     public TrieNode(char letter) {
-        //alphabet = new Alphabet();
-        potomci = new ArrayList<TrieNode>();
-        listSize = Abeceda.abeceda.size();
-        //System.out.println(listSize);
+
+        children = new ArrayList<>();
+        listSize = Alphabet.abeceda.size();
+
         fillList();
-        //System.out.println("new node " + descendants.size());
         value = letter;
         word = false;
         count++;
-        //System.out.println(count + " " + letter);
     }
 
     /**
@@ -39,27 +37,14 @@ public class TrieNode {
         char letter = ' ';
         try {
             letter = word.charAt(0);
-            //System.out.println(letter + " " + value);
-            //int position = letter - 'a';
 
-            int position = Abeceda.abeceda.indexOf(letter);
-            //System.out.println("position " + position);
-            //TrieNode child = new TrieNode(letter);
-            //System.out.println(word + position + " "+ word.length());
-            TrieNode child = potomci.get(position);
-            //TrieNode child = descendants.get(position);
-            //if (descendants.contains(child)) {
-            //if (child!=null) {
-            //child = descendants.get(position);
-            //System.out.println("Jiz pridano");
-            //} else {
-            //child = new TrieNode(letter);
+            int position = Alphabet.abeceda.indexOf(letter);
+            TrieNode child = children.get(position);
             if (child==null) {
                 child = new TrieNode(letter);
                 child.setParent(this);
-                potomci.remove(position);
-                potomci.add(position, child);
-                //System.out.println("Pridan " + letter);
+                children.remove(position);
+                children.add(position, child);
             }
 
 
@@ -67,7 +52,6 @@ public class TrieNode {
                 child.addNode(word.substring(1));
             } else {
                 child.setIsWord(true);
-                //System.out.println("True " + letter);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -83,27 +67,14 @@ public class TrieNode {
      * @return
      */
     public TrieNode findNode(char letter) {
-        //int position = letter - 'a';
         try {
-            int position = Abeceda.abeceda.indexOf(letter);
+            int position = Alphabet.abeceda.indexOf(letter);
 
-
-            //TrieNode child = new TrieNode(letter);
-            //System.out.println(descendants.indexOf(child) + " " + position);
-            //System.out.println(letter + position);
-            if (position==-1) {
+    if (position==-1) {
                 return null;
             }
-            TrieNode child = potomci.get(position);
+            TrieNode child = children.get(position);
 
-            //if (descendants.contains(child)) {
-            //if (child!=null)
-            //child = descendants.get(position);
-            //System.out.println("Nalezen " + child.value);
-            //} else {
-            //child = null;
-            //System.out.println("Nenalezen "  + letter);
-            //}
             return child;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -113,7 +84,7 @@ public class TrieNode {
     }
 
     public void setParent(TrieNode par) {
-        rodic = par;
+        parent = par;
     }
 
     public void setIsWord(boolean w) {
@@ -126,16 +97,16 @@ public class TrieNode {
 
     public void fillList() {
         for (int i = 0; i<listSize; i++) {
-            potomci.add(i, null);
+            children.add(i, null);
         }
     }
 
-    public List<TrieNode> getPotomci() {
-        return potomci;
+    public List<TrieNode> getChildren() {
+        return children;
     }
 
-    public void setPotomci(List<TrieNode> potomci) {
-        this.potomci = potomci;
+    public void setChildren(List<TrieNode> children) {
+        this.children = children;
     }
 
     public char getValue() {
@@ -147,7 +118,7 @@ public class TrieNode {
     }
 
     public TrieNode getParent() {
-        return this.rodic;
+        return this.parent;
     }
 
 
@@ -163,7 +134,6 @@ public class TrieNode {
         } else {
             return false;
         }
-        //return super.equals(obj);
     }
 
 }
